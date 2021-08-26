@@ -1,0 +1,35 @@
+@media(max-width: 991px){ /* Mobile View*/
+
+    
+    #TrendyData{
+       display:none;
+    }
+
+    #MobileTrend{
+        display:block;
+        color:black;
+        padding-top: 19%;
+        text-align: center;
+    }
+    #ArticleClickMsg{
+        color:black;
+        font-size: 20pt;
+        padding-top:25px;
+    }
+    #RightReserve{
+       padding-left: 25px;
+    }
+
+
+}
+
+@media screen and (min-width: 400px){ /* Desktop/Laptop view */
+    #MobileTrend{
+        display:none;
+        
+    }
+    #RightReserve{
+        padding-left: 40%;
+    }
+
+}

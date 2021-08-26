@@ -1,0 +1,550 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Navigation bar*/
+header
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 100px;
+    background-color: #585858f8;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+    justify-content: flex-end;
+    position: fixed;
+
+}
+
+header .logo
+{
+    height: 50px;
+    line-height: 50px;
+    font-size: 24px;
+    float: left;
+    font-weight: bold;
+}
+
+header .logo img
+{
+    height: 45px;
+}
+
+header nav
+{
+    float: right;
+}
+
+header nav ul
+{
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul
+{
+    list-style: none;
+}
+
+header nav ul li a
+{
+    height: 55px;
+    line-height: 50px;
+    padding: 0 20px;
+    text-decoration: none;
+    display: block;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active
+
+{
+    background: #39B282;
+    text-decoration: none;
+}
+
+header nav ul li a:active,
+header nav ul li a:link,
+header nav ul li a:visited
+{
+    color: #fcff5c;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.menu-toggle
+{
+    color: #000;
+    float: right;
+    line-height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+}
+
+header ul li ul
+{
+    position: absolute;
+    background-color: #585858f8;
+    display: block;
+    transition: 0.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+header ul li:hover ul
+{
+    opacity: 1;
+    visibility: visible;
+}
+
+/*Carousel*/
+.carousel-inner img
+{
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon 
+{
+    margin: 30px;
+    padding: 15px;
+    filter: invert(100%);
+}
+
+/*H2 headings*/
+h2
+{
+  font-size: 30px;
+  text-decoration: underline;
+  text-underline-position: under;
+  text-decoration-color: #7700C6;
+  text-align: center;
+}
+
+/*About Us*/
+.about
+{
+    width: 100%;
+    margin-top: 40px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.about img
+{
+    padding-top: 30px;
+    width: 50%;
+}
+
+#aboutContent p
+{
+    padding-top: 30px;
+}
+
+/*Our team*/
+.teamdetails
+{
+    margin-top: 40px;
+    width: 100%;
+    text-align: center;
+}
+.teamdetails img
+{
+    padding-top: 20px;
+    width: 50%;
+}
+
+.teamdetails p
+{
+    text-align: center;
+    padding-top: 5px;
+}
+
+/*Our Promise*/
+.promise
+{
+    background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url("../img/suicide.jpg");
+    background-size: cover;
+    color: #efefef !important;
+    background-attachment: fixed;
+    margin-top: 40px;
+    padding-bottom: 40px;
+}
+
+.promise h2
+{
+    padding-top: 40px;
+    padding-bottom: 30px;
+    color: #fff;
+}
+
+.promise p 
+{
+    font-size: 14px;
+    margin-top: 20px;
+    color:#ccc;
+}
+
+.promise .col-md-4:hover
+{
+    background: #39b2827c;
+    transition: 0.7s;
+}
+
+#icon
+{
+    font-size: 40px;
+    margin: 20px auto;
+    padding: 20px;
+    height: 80px;
+    width: 80px;
+}
+
+/*Need help*/
+.need
+{
+    width: 100%;
+    margin-top: 40px;
+}
+
+.need h5
+{
+    padding-top: 20px;
+    font-weight: bold; 
+    padding-bottom: 15px; 
+    text-align: center; 
+    color: #7c0000;
+}
+
+.need h2
+{
+    padding-bottom: 30px;
+}
+
+.need #emergency
+{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #0041163f;
+    border-radius: 15px 15px 0px 0px;
+    text-align: center;
+}
+
+.need #emergency i
+{
+    padding-top: 10px;
+    font-size: 30px;
+}
+
+.need #emergency a:link,
+.need #emergency a:visited
+{
+    color: #020202;
+}
+
+.need #emergency a:hover
+{
+    color: #008d2f;
+}
+
+#emerlink
+{
+    color: #7c0000;
+    font-weight: bold;
+}
+
+.need #enum
+{
+    padding-top: 20px;
+    padding-bottom: 15px;
+    color: #7c0000;
+    background-color: #7c00003d;
+    border-radius: 0px 0px 15px 15px;
+    text-align: center;
+}
+
+.need #enum img
+{
+    width: 15%;
+}
+
+#problem
+{
+    background-color: #4dbd3752;
+    border-radius: 15px 0px 0px 15px;
+}
+
+.need ul li{
+    list-style-type: none;
+    line-height: 3rem;
+}
+
+#happen
+{
+    background-color: #4dbd376e;
+}
+
+#effect
+{
+    background-color: #4dbd3752;
+    border-radius: 0px 15px 15px 0px;
+}
+
+/*Testimonials*/
+.test
+{
+    width: 100%;
+    margin-top: 40px;
+    background-image: linear-gradient(#fff, #1e88e5c9, #fff);
+    background-repeat: no-repeat
+
+}
+
+#slides 
+{
+    max-width: 1500px;
+    margin: auto
+}
+
+.carousel-caption 
+{
+    position: initial;
+    z-index: 10;
+    padding: 5rem 8rem;
+    color: #3b3b3b;
+    text-align: center;
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 2rem;
+}
+
+#image-caption 
+{
+    font-style: normal;
+    font-size: 1rem;
+    margin-top: 0.5rem
+}
+
+.test i 
+{
+    background-color: #03c97d;
+    padding: 30px;
+}
+
+
+.carousel-control-prev 
+{
+    justify-content: flex-start
+}
+
+.carousel-control-next 
+{
+    justify-content: flex-end
+}
+
+.carousel-control-prev,
+.carousel-control-next 
+{
+    transition: none;
+    opacity: unset
+}
+
+/*Contact Us*/
+.contact
+{
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("../img/map.jpg")!important;
+    background-size: cover!important;
+    font-size: 16px;
+    padding-bottom: 40px;
+}
+
+.contact h2
+{
+    padding-top: 30px;
+    color: #fff;
+}
+
+.follow
+{
+    color: #f7f31e;
+    padding-top: 10px;
+}
+
+#contactl
+{
+    color: #fff;
+}
+
+.contact-info .fa
+{
+    margin: 10px;
+    color: #3ba5cf;
+    font-weight: bold;
+}
+
+#map 
+{
+    padding-top: 30px;
+    text-align: center;
+}
+
+#map iframe
+{
+    width: 100%;
+    height: 250px;
+}
+
+.footer
+{
+    background-color: #585858f8;
+    color: #fff;
+    padding:10px;    
+    width: 100%;
+    position: relative;
+    bottom:0;
+    text-align: center;
+}
+
+.footer img
+{
+    width: 10%;
+}
+
+/*Responsiveness*/
+@media(max-width: 991px)
+{
+    /*navbar*/
+    header
+    {
+        padding:0 20px;
+    }
+
+    .menu-toggle
+    {
+        display: block;
+    }
+
+    header nav
+    {
+        position: absolute;
+        width: 100%;
+        height: calc(100vh - 50px);
+        background-color: #585858f8;
+        top: 50px;
+        left: -100%;
+        transition: 0.5s;
+    }
+    header nav.active
+    {
+        left: 0;
+    }
+    header nav ul
+    {
+        display: block;
+        text-align: center;
+    }
+
+    header .logo img
+    {
+        height: 35px;
+    }
+
+    header nav ul li a
+    {
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+    }
+
+    header ul li ul
+    {
+        width: 100%;
+    }
+
+    /*Carousel*/
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon 
+    {
+        margin: 25px;
+        padding: 10px;
+    }
+
+    /*H2 tags*/
+    h2
+    {
+      font-size: 25px;
+    }
+
+    /*About us*/
+    #aboutContent
+    {
+        font-size: 14px;
+    }
+
+    .about img
+    {
+        padding-top: 50px;
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: -1px;
+        left: 1px;
+    }
+
+    .teamdetails img
+    {
+        padding-top: 50px;
+        width: 100%;
+        height: auto;
+    }
+
+    /*Our Promise*/
+    .promise h3
+    {
+        font-size: 20px;
+    }
+
+    .promise p
+    {
+        font-size: 15px;
+    }
+
+    /*Need Help*/
+    .need
+    {
+        text-align: center;
+    }
+
+    #problem
+    {
+        margin-top: 30px;
+    }
+
+    .carousel-caption 
+    {
+        position: initial;
+        padding: 2rem 5rem;
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    .test i 
+    {
+        padding: 15px;
+    }
+
+    .footer img
+    {
+        width: 30%;
+    }
+}
+
+
+
