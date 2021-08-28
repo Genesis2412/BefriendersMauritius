@@ -1,13 +1,27 @@
 <?php session_start();
-    require("connection.php");
+require("connection.php");
+
+if(!(isset($_SESSION['staff'])))
+{
+    $_SESSION['LoginWarns'] = "Error : Please Login";
+    header("Location: signin.php");
+
+}
+
+?>
+
+
+1<?php 
 
     if(isset($_POST['SubmAddArticle'])){
+
         $author = $_SESSION['FirstName']." ".$_SESSION['LastName'];
 
-        $author = "DevArticle";
-        $Title = $_POST['ArticleTitle'];
-        $ArticleData = $_POST['contents'];
-
+        $author = $_SESSION['name'];
+        
+        $Title = mysqli_real_escape_string($connection,$_POST['ArticleTitle']);
+        $ArticleData = mysqli_real_escape_string($connection,$_POST['contents']);
+        
 
         // $file = $_FILES['CaptImg'];
         // $numOfFiles = count($_FILES['ArticleMultiFile']['name']);
@@ -90,7 +104,7 @@
         $sql = "INSERT INTO article(ATitle,Author,ArticleData,CoverImage) VALUES ('$Title','$author','$ArticleData','$coverImg'); ";
         
         if(mysqli_query($conn,$sql)){
-            $_SESSION['adminWarning'] = "Article has been successfully created!";
+            $_SESSION['adminWarning'] = "<a href='MainArticle.html' target='_blank' style='color:red;'> Article </a> has been successfully created! ";
              header("Location: newadmin.php");
         }
 

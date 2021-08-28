@@ -10,7 +10,7 @@ if(!(isset($_GET['Eventid']))){
 }
 else{
 
-    $id = $_GET['Eventid'];
+    $id = mysqli_real_escape_string($connection,$_GET['Eventid']);
 }
 
 $sql="select * from events where EventID = '".$id."';";
@@ -164,15 +164,15 @@ if(mysqli_num_rows($result)>0){
 
     
     <div id="EventInformations" style="padding-top:50px;" class="text-center">
-        <span class="InfoEventA">
+        <span style="padding:10px;">
             <i class="fa far fa-bell"></i>
             <?php echo " Event Type: ".$row['EventType'];  ?>
         </span>
-        <span class="InfoEventA">
+        <span style="padding:10px;" >
             <i class="fa fa-calendar" aria-hidden="true"></i>
             <?php echo $row['EventDate']; ?> At <?php echo $row['EventTime']; ?> 
         </span>
-        <span class="InfoEventA">
+        <span style="padding:10px;">
             <i class="fa fa-map-marker" aria-hidden="true"></i>
             <?php echo $row['EventLocation']; ?> 
         </span>

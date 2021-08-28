@@ -9,15 +9,17 @@ if(!(isset($_SESSION['staff'])))
 }
 
 ?>
+
+
 <?php
 
 $id = $_POST['ID'];
 
-$sql="DELETE FROM events where EventID='".$id."';";
 
+$sql = "UPDATE `testimonial` SET `status` = 'off' WHERE `ID` = '$id';";
 if(mysqli_query($conn,$sql)){
 
-    $_SESSION['adminWarning'] = "Event ID: ".$id." has been deleted! ";
+    //$_SESSION['adminWarning'] = "Testimonial ID: ".$id." has been archived! ";
     //header("Location: newAdmin.html");
 }
 

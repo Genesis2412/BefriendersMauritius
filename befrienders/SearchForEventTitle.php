@@ -1,8 +1,20 @@
+<?php session_start();
+require("connection.php");
+
+if(!(isset($_SESSION['staff'])))
+{
+    $_SESSION['LoginWarns'] = "Error : Please Login";
+    header("Location: signin.php");
+
+}
+
+?>
+
 <?php
-    require('connection.php');
 
 
-    $query=$_POST['keyTerm'];
+
+    $query=mysqli_real_escape_string($connection,$_POST['keyTerm']);
     
     $sql="select * from events where EventName LIKE '%".$query."%';";
 

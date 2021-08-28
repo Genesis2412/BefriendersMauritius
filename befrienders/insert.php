@@ -1,5 +1,13 @@
 <?php session_start();
-include('connection.php');
+require("connection.php");
+
+if(!(isset($_SESSION['staff'])))
+{
+    $_SESSION['LoginWarns'] = "Error : Please Login";
+    header("Location: signin.php");
+
+}
+
 ?>
 
 
@@ -46,7 +54,7 @@ if(isset($_POST['insertdata']))
 		
 	}
 	else{
-		$_SESSION['adminWarning']="Staff Not Added ";
+		$_SESSION['adminWarning']="Staff Not Added ssss:".$insertquery;
 	}
 	header('Location: newadmin.php');
 }

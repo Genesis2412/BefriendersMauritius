@@ -16,6 +16,8 @@ if(!(isset($_SESSION['staff'])))
 
 <head>
 
+
+
     <link rel='stylesheet' href="css//newAdmin.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
     <script src="index.js"> </script>
@@ -31,6 +33,10 @@ if(!(isset($_SESSION['staff'])))
       })
       </script>
  
+
+
+
+
 
 
 </head>
@@ -82,7 +88,7 @@ if(!(isset($_SESSION['staff'])))
       <path d="M6.57,1A5.57,5.57,0,1,1,1,6.57,5.57,5.57,0,0,1,6.57,1m0-1a6.57,6.57,0,1,0,6.57,6.57A6.57,6.57,0,0,0,6.57,0Z"/><rect x="11.84" y="9.87" width="2" height="5.93" transform="translate(-5.32 12.84) rotate(-45)"/>
     </symbol>
   </svg>
-  <header class="page-header">
+  <header style="right:-100px;" class="page-header">            <!-- remove disp none    style="display:none;"   -->
     <nav>
       <a href="./">
         <img class="logo" src="img//logo.png" alt="befrienders logo">
@@ -138,27 +144,29 @@ if(!(isset($_SESSION['staff'])))
           </a>
         </li>
 
-        <!-- <li>
-          <a href="#0" >
-            <svg>
+        <li>
+        <a  id="changePwd">
+        <svg>
               <use xlink:href="#options"></use>
             </svg>
-            <span style="color:white;">Options</span>
-          </a>
-        </li> -->
-        
-        <!-- <li>
-          <a href="#0" onclick="hideSideMenu();">
+            <button > <span style="color:white;"> Settings  </span></button>
+            </a>
+        </li>
+        <!--  -->
+        <li id="backBtn" style="display:none;">
+          <a href="#" onclick="goToMain();">
             <svg>
               <use xlink:href="#collapse"></use>
             </svg>
-            <span style="color:white;"> Collapse </span>
+            <span style="color:white;"> Go Back </span>
           </a>
-        </li> -->
+        </li>
         
       </ul>
     </nav>
   </header>
+
+
   <section class="page-content">
     <section class="search-and-user" >
       <h1> Welcome to Befrienders Admin Interface System </h1>
@@ -188,7 +196,7 @@ if(isset($_SESSION['adminWarning'])){
   echo $_SESSION['adminWarning'];
   echo '<button style="float:right;color:black;font-size:20px;" id="closeBannerWarns"> X </button>';
   echo '</h4><br/>';
-
+  echo "<script> $('#banWarnsAdmin').delay(10000).fadeOut('slow'); </script>";
   unset($_SESSION['adminWarning']);
 }
 ?>
@@ -201,90 +209,75 @@ if(isset($_SESSION['adminWarning'])){
     <section class="grid " id="landingPage">
 
       
-      <article class="articleSpacer">
+      <article class="articleSpacer" style="height:110%;">
 
         <div>
  
             <h2>  Latest Testimonials </h2>
-            <div style="padding-left:10px;padding-top:10px;"> 
-                <!-- <p class="spaceTestim" > Mohima Says Blabla with <span class="heart"> ❤❤❤❤</span> </p>
-                <p class="spaceTestim"> Nihal Says hihi with <span class="heart"> ❤❤</span> </p>
-                <p class="spaceTestim"> Rishal Says yoo with <span class="heart"> ❤❤❤❤❤</span>  </p> -->
-
-
-                <?php
-
-        $sql = "Select * from testimonial where status='on' limit 6; ";
-        $query= mysqli_query($connection,$sql);
-        $emoji ="";
-        if(mysqli_num_rows($query)>0){
-
-            while($row=mysqli_fetch_assoc($query)){
-
-                $hearts = $row['rating'];
-
-                // for ($i=0; $i<$hearts; $i++){
-                //     $emoji = $emoji + "❤";
-                // }
-                echo '<p class="spaceTestim" > <i> '.$row["name"].' </i>  says <i> '.$row["remark"].' </i> with <span style="padding-right:20px;"> </span> <span class="heart"> ';
-                if($hearts=="1"){
-                    echo "❤";
-                } else if($hearts=="2"){
-                    echo "❤❤";
-                } else if($hearts=="3"){
-                    echo "❤❤❤";
-                } else if($hearts=="4"){
-                    echo "❤❤❤❤";
-                } else if($hearts=="5"){
-                    echo "❤❤❤❤❤";
-                }
-                echo '</span> <span style="padding-left:25px;"> <button id="Remove'.$row["ID"].'"style="padding:2px;background-color:#454d55;;color:white;"> X </button> </span> </p> <hr>';
-      
-
-                echo "<script>
-                                    $(document).ready(function(){
-                                        
-                                        $('#Remove".$row['ID']."').click(function(){
-
-                                        var ID=".$row['ID'].";
-                                            $.ajax({
-                                                type:'POST',
-                                                url:'deleteTestimonial.php',
-                                                data: {ID:ID},
-                                                success: function(value){ 
-                                                    //alert('Event has been deleted!');
-                                                    window.location.replace('newAdmin.php');
-
-                                                    
-
-                                                }
-                                            });
-                                        });
-                                    });
-                        </script>"
-                  ;
-              
-                
-
-               // echo '<p class="spaceTestim" > '.$row["name"].' Says '.$row["remark"].' with <span class="heart">  ❤ </span> </p>';
-            }
-
-        }
-        else{
-            echo "No more testimonials!";
-        }
-        ?>
-
-
-            </div>
+            <div id="onTestimonials" style="padding-left:10px;padding-top:10px;">   </div>
 
 
             
 
            
         </div>
+
+        <span style="padding-left:3%;padding-top:3%;"> <button id="hideTestimonial" style="padding:10px;background-color:#189e6d;color:white;"> Hide Testimonials </button> </span>
+        <span style="padding-left:3%;padding-top:3%;"> <button id="showTestimonial" style="padding:10px;background-color:#189e6d;color:white;display:none;"> Show Testimonials </button> </span>
       
       </article>
+ 
+
+
+
+
+
+
+
+      <article id="changepassContainer" style="display:none;" class="articleSpacer" > </article>
+      <span style="display:none;" id="pwdChangeBlank"> &nbsp; </span>
+
+
+
+
+
+
+    <?php
+      $emotions = "
+      select rating, count(*) as occurrences
+      from testimonial
+      group by rating
+      order by occurrences desc, rating;
+      ";
+
+      $result = mysqli_query($connection,$emotions);
+      $e1=0;$e2=0;$e3=0;$e4=0;$e5=0;
+      while($row = mysqli_fetch_assoc($result)){
+        switch($row['rating']){
+          case "1":
+            $e1=$row['occurrences'];
+            break;
+            case "2":
+              $e2=$row['occurrences'];
+              break;
+            case "3":
+              $e3=$row['occurrences'];
+              break;
+            case "4":
+              $e4=$row['occurrences'];
+              break;
+            case "5":
+              $e5=$row['occurrences'];
+              break;
+                              
+        }
+      }
+
+    
+    ?>
+
+
+
 
 
       <article class="articleSpacer"> 
@@ -295,22 +288,27 @@ if(isset($_SESSION['adminWarning'])){
             <table style="padding-left:50%;">
                 <tr>
                     <td>😄 </td>
-                    <td>from 5 users </td>
+                    <td>from <?php echo $e5; ?> users </td>
                 </tr>
                 <tr> <td> </td><td> &nbsp; </td> </tr> <!-- Spacers for tab -->
                 <tr>
                     <td>😊 </td>
-                    <td>from 3 users </td>
+                    <td>from <?php echo $e4; ?> users </td>
+                </tr>
+                <tr> <td> </td><td> &nbsp; </td> </tr> <!-- Spacers for tab -->
+                <tr>
+                    <td>🙂 </td>
+                    <td>from <?php echo $e3; ?> users </td>
                 </tr>
                 <tr> <td> </td><td> &nbsp; </td> </tr> <!-- Spacers for tab -->
                 <tr>
                     <td>😐 </td>
-                    <td>from 2 users </td>
+                    <td>from <?php echo $e2; ?> users </td>
                 </tr>
                 <tr> <td> </td><td> &nbsp; </td> </tr> <!-- Spacers for tab -->
                 <tr>
-                    <td>😠 </td>
-                    <td>from 0 users </td>
+                    <td>😔 </td>
+                    <td>from <?php echo $e1; ?> users </td>
                 </tr>
             </table>
              
@@ -340,7 +338,7 @@ if(isset($_SESSION['adminWarning'])){
     
     </article>
 
-      <article class="articleSpacer">
+      <article class="articleSpacer" style="height:105%;" >
           
       <div> <h2> New Testimonials to be approved for display</h2>
       <br/>
@@ -373,8 +371,11 @@ if(isset($_SESSION['adminWarning'])){
 
 <!-- SCRIPT AREA -->
 
+
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
+
+            
             <script>
               function approveTestimonial($id){
                 //alert("ID "+$id+" has been approved!");
@@ -390,10 +391,28 @@ if(isset($_SESSION['adminWarning'])){
 
               }
 
+              
+
+              function test(){
+                alert("TESTED");
+              }
+
+             
+
+              function loadOnTestis(){
+                $.ajax({
+                    type:"POST",
+                    url:"displayOnTestimonial.php",
+                    success: function(value){
+                        $("#onTestimonials").html(value);
+                    }
+                });
+              }
               </script>
 
           
           <script type="text/javascript">
+          
             function loadOffTestis()
             {
                 $.ajax({
@@ -403,6 +422,8 @@ if(isset($_SESSION['adminWarning'])){
                         $("#offlineTestimonials").html(value);
                     }
                 });
+
+                loadOnTestis();
             }
           </script>
 
@@ -411,6 +432,8 @@ if(isset($_SESSION['adminWarning'])){
         <script type="text/javascript">
             function managestaff()
             {
+              $('#backBtn').fadeIn('slow');
+
                 $.ajax({
                     type:"POST",
                     url:"addstaff.php",
@@ -429,6 +452,8 @@ if(isset($_SESSION['adminWarning'])){
 
             function managearticle()
             {
+              $('#backBtn').fadeIn('slow');
+
                 $.ajax({
                     type:"POST",
                     url:"AddArticleAjax.php",
@@ -437,7 +462,7 @@ if(isset($_SESSION['adminWarning'])){
                         $(".containment").hide();
                         $("#EventMainInfo").hide();
                         
-                      $("#articleMainPage").show();
+                        $("#articleMainPage").show();
                         $("#articleMainPage").html(value);
                         
 
@@ -448,6 +473,7 @@ if(isset($_SESSION['adminWarning'])){
 
             function manageevent()
             {
+              $('#backBtn').fadeIn('slow');
                 $.ajax({
                     type:"POST",
                     url:"EventAdder.php",
@@ -464,17 +490,57 @@ if(isset($_SESSION['adminWarning'])){
                     }
                 });
             }
+
+            function goToMain(){
+              window.location.href = "newadmin.php";
+            }
         </script>
 
         <script>
           
                $(document).ready(function(){
 
-                $("#collapseBtn").click(function(){
-                  $('.page-header').hide();
+                $("#changePwd").click(function(){
+
+                  $("#landingPage").show();
+                  $("#articleMainPage").show();
+
+                  $(".containment").hide();
+                  $("#EventMainInfo").hide();
+                  $("#articleMainPage").hide();
+
+
+                  $("#changepassContainer").toggle();
+                  $("#pwdChangeBlank").toggle();
+                  $.ajax({
+                    type:"POST",
+                    url:"settingPage.php",
+                    success: function(value){
+                        $("#changepassContainer").html(value);
+                    }
+                });
+
+                
                   
+                });
+
+                $("#collapseBtn").click(function(){
+                  $('.page-header').hide();                  
 
                 });
+
+                $("#hideTestimonial").click(function(){
+                  $("#onTestimonials").fadeOut("slow");
+                  $("#hideTestimonial").hide();
+                  $("#showTestimonial").show();
+                });
+
+                $("#showTestimonial").click(function(){
+                  $("#onTestimonials").fadeIn("slow");
+                  $("#showTestimonial").hide();
+                  $("#hideTestimonial").show();
+                });
+
 
             });
         </script>

@@ -13,7 +13,7 @@ if(!(isset($_SESSION['staff'])))
 
 <?php
 
-        $sql = "Select * from testimonial where status='off' limit 5; ";
+        $sql = "Select * from testimonial where status='off'; ";
         $query= mysqli_query($connection,$sql);
         $emoji ="";
         if(mysqli_num_rows($query)>0){

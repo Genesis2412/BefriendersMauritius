@@ -1,5 +1,12 @@
 <?php session_start();
-require_once("connection.php");
+require("connection.php");
+
+if(!(isset($_SESSION['staff'])))
+{
+    $_SESSION['LoginWarns'] = "Error : Please Login";
+    header("Location: signin.php");
+
+}
 
 ?>
 <html>
@@ -137,7 +144,7 @@ require_once("connection.php");
         </div>
     </div>
     <!-- End of modal-->
-
+    <a href="Events.html" target="_blank"> <button class="btn btn-success"  >  View  Events </button></a>
     <!-- Modal Start -->
     <div id="DelEvent" class="modal fade hideMe" role="dialog">
         <div class="modal-dialog">

@@ -14,7 +14,8 @@ if(!(isset($_SESSION['staff'])) && (!($_SESSION['Position']=="3")))
 require('connection.php');
 
 if(isset($_GET['id'])){
-    $id=$_GET['id'];
+
+    $id= mysqli_real_escape_string($connection,$_GET['id']);
 
 
     ?>
@@ -28,7 +29,7 @@ if(isset($_GET['id'])){
     <div class="jumbotron">
     <?php
     echo "<h1> You are now editing the Article ID: ".$id."</h1>";
-    echo "<span style='float:right'> Back to  <a href='admin.php'> Admin Interface</a></span> "
+    echo "<span style='float:right'> Back to  <a href='newadmin.php'> Admin Interface</a></span> "
     ?>
 
     <form name="EditArticle" method="POST" action="#">
@@ -55,8 +56,8 @@ if(isset($_GET['id'])){
 
     <?php
         if(isset($_POST['SubmitChangeArticle'])){ //Form submit in same page
-            $title=$_POST['ArticleTitle'];
-            $Content=$_POST['contents'];
+            $title= mysqli_real_escape_string($connection,$_POST['ArticleTitle']);
+            $Content= mysqli_real_escape_string($connection,$_POST['contents']);
             //TimeStamp will automatically be updated
 
             $sqlInsert="UPDATE `article` SET `ATitle`='".$title."' , `ArticleData`= '".$Content."' WHERE ArticleID='$id';";

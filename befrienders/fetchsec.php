@@ -1,5 +1,17 @@
+<?php session_start();
+require("connection.php");
+
+if(!(isset($_SESSION['staff'])))
+{
+    $_SESSION['LoginWarns'] = "Error : Please Login";
+    header("Location: signin.php");
+
+}
+
+?>
+
 <?php
-	include ('connection.php');
+	
 
 	$sql="SELECT * FROM home;";
     $query=mysqli_query($connection,$sql);

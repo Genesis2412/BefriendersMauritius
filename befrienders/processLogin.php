@@ -20,6 +20,7 @@ if(isset($_POST['pwd'])){
             $_SESSION['email'] =  $row['email'];
             $_SESSION['name'] = $row['first_name'] ." ".$row['last_name'];
             $_SESSION['Position'] = $row['position'];
+            $_SESSION['ASKLA'] = $row['id'];
 
 
         }

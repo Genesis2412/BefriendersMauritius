@@ -1,5 +1,12 @@
 <?php session_start();
+require("connection.php");
 
+if(!(isset($_SESSION['staff'])))
+{
+    $_SESSION['LoginWarns'] = "Error : Please Login";
+    header("Location: signin.php");
+
+}
 
 ?>
 <!DOCTYPE html>
@@ -53,10 +60,11 @@
     </script>
 </head>
 <body>
-
+    
 	<button class="btn btn-info" value="" data-toggle="modal" data-target="#AddArti"> Add Article </button>
     <button class="btn btn-info" value="" data-toggle="modal" data-target="#DelArti"> Delete Article </button>
     <button class="btn btn-info" value="" data-toggle="modal" data-target="#ModifArti"> Modify  Article </button>
+    <a href="MainArticle.html" target="_blank"> <button class="btn btn-success"  >  View  Article </button></a>
 
 	<!-- Modal Start Add Article-->
     <div id="AddArti" class="modal fade hideMe"  role="dialog">
@@ -129,7 +137,7 @@
                     <!--Content --> 
                     
                     <?php
-                        require("connection.php");
+                       
                         $sqlCodes = "select * from article";
                         $resultSet=mysqli_query($conn,$sqlCodes);
 

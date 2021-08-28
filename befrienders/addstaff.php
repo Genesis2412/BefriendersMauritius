@@ -1,5 +1,13 @@
 <?php session_start();
-include('connection.php');
+require("connection.php");
+
+if(!(isset($_SESSION['staff'])))
+{
+    $_SESSION['LoginWarns'] = "Error : Please Login";
+    header("Location: signin.php");
+
+}
+
 ?>
 
 

@@ -7,14 +7,13 @@ if(!(isset($_SESSION['staff'])) && (!($_SESSION['Position']=="3")))
 
 }
 
-
 ?>
 <?php 
 
 require('connection.php');
 
 if(isset($_GET['id'])){
-    $id=$_GET['id'];
+    $id= mysqli_real_escape_string($connection,$_GET['id']);
 
 
     ?>
@@ -144,12 +143,12 @@ if(isset($_GET['id'])){
     <?php
         if(isset($_POST['SubmitChangeArticle'])){ //Form submit in same page
 
-            $Eventtitle=$_POST['nameOfEvent'];
-            $Content=$_POST['Evecontents'];
-            $Locat=$_POST['loc'];
-            $dateE=$_POST['DateEvent'];
-            $timeE=$_POST['TimeEvent'];
-            $typeE=$_POST['TypeEvent'];
+            $Eventtitle= mysqli_real_escape_string($connection,$_POST['nameOfEvent']);
+            $Content= mysqli_real_escape_string($connection,$_POST['Evecontents']);
+            $Locat= mysqli_real_escape_string($connection,$_POST['loc']);
+            $dateE= mysqli_real_escape_string($connection,$_POST['DateEvent']);
+            $timeE= mysqli_real_escape_string($connection,$_POST['TimeEvent']);
+            $typeE= mysqli_real_escape_string($connection,$_POST['TypeEvent']);
             //TimeStamp will automatically be updated
             
             $sqlInsert="UPDATE `events` SET EventName='$Eventtitle' , EventDescription='$Content', EventType='$typeE', EventLocation='$Locat',EventDate='$dateE',EventTime='$timeE' WHERE EventID='$id';";

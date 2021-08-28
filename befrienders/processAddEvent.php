@@ -1,14 +1,27 @@
 <?php session_start();
-require('connection.php');
+require("connection.php");
+
+if(!(isset($_SESSION['staff'])))
+{
+    $_SESSION['LoginWarns'] = "Error : Please Login";
+    header("Location: signin.php");
+
+}
+
+?>
+
+
+<?php 
+
 
 if(isset($_POST['addEvent'])){
 
-    $eventName = $_POST['EventName'];
-    $Description = $_POST['EventDatas'];
-    $Location = $_POST['EventLocation'];
-    $Type = $_POST['TypeEvent'];
-    $Date = $_POST['EventDate'];
-    $Time = $_POST['EventTime'];
+    $eventName = mysqli_real_escape_string($connection,$_POST['EventName']);
+    $Description = mysqli_real_escape_string($connection,$_POST['EventDatas']);
+    $Location = mysqli_real_escape_string($connection,$_POST['EventLocation']);
+    $Type = mysqli_real_escape_string($connection,$_POST['TypeEvent']);
+    $Date = mysqli_real_escape_string($connection,$_POST['EventDate']);
+    $Time = mysqli_real_escape_string($connection,$_POST['EventTime']);
     
 
     $file = $_FILES['file'];
