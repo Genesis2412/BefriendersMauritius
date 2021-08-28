@@ -61,8 +61,8 @@ if(!(isset($_SESSION['staff'])))
                </div>
 
                <div class="form-group">
-                	<label> Username(Unique) </label>
-                	<input type="text" name="uname" class="form-control" placeholder="Enter Username" required>
+                	<label> Username(Unique) </label> <br/> <label style="padding-left:8%;color:Red;" id="chkPwd"> </label>
+                	<input type="text" id="IDusername" name="uname" class="form-control" onkeyup="checkuname()" placeholder="Enter Username" required>
                </div>
 
                <div class="form-group">
@@ -71,8 +71,8 @@ if(!(isset($_SESSION['staff'])))
                </div>
 
                <div class="form-group">
-                	<label> Email </label>
-                	<input type="email" name="email" class="form-control" placeholder="Enter Email" required >
+                	<label> Email </label> <br/> <label style="padding-left:8%;color:Red;" id="chkEmail"> </label>
+                	<input type="email" id="userEmailAdr" name="email" class="form-control" placeholder="Enter Email" onkeyup="checkemail()" required >
                </div>
 
                <div class="form-group">
@@ -101,7 +101,7 @@ if(!(isset($_SESSION['staff'])))
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" name="insertdata" class="btn btn-primary">Save Record</button>
+        <button type="submit" id="AddStaffBtnFrm" name="insertdata" class="btn btn-primary" disabled>Save Record</button>
       </div>
   </form>
     </div>
@@ -141,11 +141,17 @@ if(!(isset($_SESSION['staff'])))
                 	<input type="text" name="address" id="address" class="form-control" placeholder="Enter Address"  required >
                </div>
 
-               <div class="form-group">
+               <!-- <div class="form-group">
                 	<label> Email </label>
                 	<input type="email" name="email" id="email" class="form-control" placeholder="Enter Email" required >
-               </div>
+               </div> -->
 
+
+               <div class="form-group">
+                	<label> Email(<i> Unchanged if blank </i>) </label> <br/> 
+                	<input type="email"  name="email" class="form-control" placeholder="Enter Email" >
+               </div>
+               
                <div class="form-group">
                 	<label> Contact Number </label>
                 	<input type="text" name="contact" id="contact" class="form-control" placeholder="Enter Contact Number" required >
@@ -157,16 +163,16 @@ if(!(isset($_SESSION['staff'])))
                </div>
 
                <div class="form-group" >
-                	<label> Access Post </label> <br/>
+                	<label> Access Post (<i> will be set as Check Admin if blank </i>) </label> <br/>
                 	<!-- <input type="text" name="position" class="form-control" placeholder="Enter Access Position" required > -->
                   <input type="radio" id="3" name="position" value="Pos3">
-                  <label for="3">Check Admin (REDUCED ACCESS)</label> <br/>
+                  <label for="3">Check Admin (REDUCED ACCESS) | VIEW ONLY </label> <br/>
 
                   <input type="radio" id="2" name="position" value="Pos2">
-                  <label for="2">Middle Admin Level (LIMITED ACCESS)</label> <br/>
+                  <label for="2">Middle Admin (LIMITED ACCESS) | DELETE ONLY </label> <br/>
  
                   <input type="radio" id="1" name="position" value="Pos1">
-                  <label for="1">SuperUser (ALL ACCESS)</label> <br/>
+                  <label for="1">Super User (Whole Lvl ACCESS) | VIEW DELETE EDIT </label> <br/>
                </div>
         
       </div>
@@ -338,6 +344,8 @@ if(!(isset($_SESSION['staff'])))
 
 <script>
 	$(document).ready(function(){
+
+
          $('.deletebtn').on('click',function(){
              $('#deletemodal').modal('show');
 
@@ -358,7 +366,40 @@ if(!(isset($_SESSION['staff'])))
 
 
 <script>
+
+
+  function checkuname(){
+    $.ajax({
+      type:"POST",
+      url:"chkusernameOccurence.php",
+      data: { name:document.getElementById('IDusername').value },
+      success: function(value){
+        $('#chkPwd').html(value);
+      }
+    })
+  }
+
+  function checkemail(){
+    $.ajax({
+      type:"POST",
+      url:"chkmailOccurence.php",
+      data: { email:document.getElementById('userEmailAdr').value },
+      success: function(value){
+        $('#chkEmail').html(value);
+      }
+    })
+  }
+
+  
 	$(document).ready(function(){
+
+
+    
+
+    
+    
+
+
          $('.editbtn').on('click',function(){
              $('#editmodal').modal('show');
 

@@ -54,7 +54,7 @@ if(isset($_POST['insertdata']))
 		
 	}
 	else{
-		$_SESSION['adminWarning']="Staff Not Added ssss:".$insertquery;
+		$_SESSION['adminWarning']="Staff Not Added ";
 	}
 	header('Location: newadmin.php');
 }

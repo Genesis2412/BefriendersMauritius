@@ -29,7 +29,15 @@ if(isset($_POST['updatedata']))
 		$permission="pos3"; //lowest position with limited access
 		//$_SESSION['adminWarning']=$_SESSION['adminWarning']+"Since Position was not defined, It was assigned the Check Position. ";
 	}
-    $query = " UPDATE staff SET  first_name='$fname', last_name='$lname', address='$address', email='$email', JobPosition='$position', contact_number='$contact', position='$permission' WHERE id='$id' ";
+
+	if($email==" "){
+		$query = " UPDATE staff SET  first_name='$fname', last_name='$lname', address='$address', email='$email', JobPosition='$position', contact_number='$contact', position='$permission' WHERE id='$id' ";
+    
+	}
+	else{ //Dont modify email if blank
+		$query = " UPDATE staff SET  first_name='$fname', last_name='$lname', address='$address', JobPosition='$position', contact_number='$contact', position='$permission' WHERE id='$id' ";
+    
+	}
     $query_run =  mysqli_query($connection,$query);
 
     if($query_run){

@@ -134,15 +134,21 @@ if(!(isset($_SESSION['staff'])))
         <li class="menu-heading">
           <h3>Settings</h3>
         </li>
+        <?php
+
+          if($_SESSION['Position']=="Pos3"){
+            echo '
+              <li>
+              <a href="swapsec.php" target="_blank">
+              <svg>
+                <use xlink:href="#settings"></use>
+              </svg>
+              <span style="color:white;">Update Website</span>
+              </a>
+              </li>';
+          }
+        ?>
         
-        <li>
-          <a href="swapsec.php" target="_blank">
-            <svg>
-              <use xlink:href="#settings"></use>
-            </svg>
-            <span style="color:white;">Update Website</span>
-          </a>
-        </li>
 
         <li>
         <a  id="changePwd">
