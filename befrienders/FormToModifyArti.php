@@ -64,6 +64,10 @@ if(isset($_GET['id'])){
 
             if( mysqli_query($conn,$sqlInsert)){
                 $_SESSION['adminWarning'] = "Article with ID ".$id." has been modified!";
+                $additional_txt = "Updated Article: $title";		
+                $auditSql = "INSERT INTO `audit`( `done_by`, `section`, `change_source`, `add_text`) VALUES (' ".$_SESSION['name']." ','Article','Update','$additional_txt');";
+                $audited = mysqli_query($connection,$auditSql);
+
                 header("Location: newadmin.php");      
                
             }

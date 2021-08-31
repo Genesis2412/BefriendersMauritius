@@ -155,6 +155,11 @@ if(isset($_GET['id'])){
 
             if( mysqli_query($conn,$sqlInsert)){
                 $_SESSION['adminWarning'] = "Event with ID ".$id." has been modified!";
+
+                $additional_txt = "Updated Event: $Eventtitle";		
+                $auditSql = "INSERT INTO `audit`( `done_by`, `section`, `change_source`, `add_text`) VALUES (' ".$_SESSION['name']." ','Event','Update','$additional_txt');";
+                $audited = mysqli_query($connection,$auditSql);
+
                 header("Location: newadmin.php");
                 
                 

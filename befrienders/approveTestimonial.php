@@ -19,6 +19,9 @@ if(isset($_GET['id'])){
 
     if(mysqli_query($connection,$sql)){
 
+        $additional_txt = "Approved Testimonial ID: $id";		
+		$auditSql = "INSERT INTO `audit`( `done_by`, `section`, `change_source`, `add_text`) VALUES (' ".$_SESSION['name']." ','Testimonial','Approved','$additional_txt');";
+		$audited = mysqli_query($connection,$auditSql);
         // $_SESSION['AdminWarn'] =  "Successfully approved Testimonial";
     }
     else{

@@ -70,6 +70,10 @@ if(isset($_POST['addEvent'])){
 
     if(mysqli_query($conn,$sql)){
         $_SESSION['adminWarning'] = "New Event ".$eventName." has been added! ";
+		$additional_txt = "Added Event :$eventName";		
+		$auditSql = "INSERT INTO `audit`( `done_by`, `section`, `change_source`, `add_text`) VALUES (' ".$_SESSION['name']." ','Event','Add','$additional_txt');";
+		$audited = mysqli_query($connection,$auditSql);
+
         header("Location: newAdmin.php");
 
     }

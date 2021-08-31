@@ -42,6 +42,12 @@ if(isset($_POST['updatedata']))
 
     if($query_run){
     	$_SESSION['adminWarning']="Staff Updated";
+
+		$additional_txt = "Updated Staff $fname $lname";		
+		$auditSql = "INSERT INTO `audit`( `done_by`, `section`, `change_source`, `add_text`) VALUES (' ".$_SESSION['name']." ','Staff','Update','$additional_txt');";
+		$audited = mysqli_query($connection,$auditSql);
+
+
     	header("Location:newAdmin.php");
     }else{
 

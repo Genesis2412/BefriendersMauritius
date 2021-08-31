@@ -21,6 +21,12 @@ if(isset($_POST['deletedata']))
 
 	if($query_run){
 		$_SESSION['adminWarning']="Staff was deleted";
+
+		$additional_txt = "Removed Staff with ID $id ";		
+		$auditSql = "INSERT INTO `audit`( `done_by`, `section`, `change_source`, `add_text`) VALUES (' ".$_SESSION['name']." ','Staff','Delete','$additional_txt');";
+		$audited = mysqli_query($connection,$auditSql);
+
+
 		 header("Location:newAdmin.php"); 
 	}else{
 		$_SESSION['adminWarning']="Staff was not deleted";

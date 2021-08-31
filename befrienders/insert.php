@@ -51,7 +51,13 @@ if(isset($_POST['insertdata']))
 
 	if($insertquery){
 		$_SESSION['adminWarning']="Staff Added";
+
+		$additional_txt = "Added Staff $fname $lname with Position $position and email $email";		
+		$auditSql = "INSERT INTO `audit`( `done_by`, `section`, `change_source`, `add_text`) VALUES (' ".$_SESSION['name']." ','Staff','Add','$additional_txt');";
+		$audited = mysqli_query($connection,$auditSql);
 		
+		
+
 	}
 	else{
 		$_SESSION['adminWarning']="Staff Not Added ";

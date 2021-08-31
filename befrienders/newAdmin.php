@@ -136,7 +136,7 @@ if(!(isset($_SESSION['staff'])))
         </li>
         <?php
 
-          if($_SESSION['Position']=="Pos3"){
+          if($_SESSION['Position']=="Pos1"){
             echo '
               <li>
               <a href="swapsec.php" target="_blank">
