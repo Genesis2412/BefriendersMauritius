@@ -469,6 +469,11 @@ h2
     }
 
     /*Carousel*/
+    #banner
+    {
+        margin-top: 20px;
+    }
+
     .carousel-control-prev-icon,
     .carousel-control-next-icon 
     {

@@ -7,12 +7,6 @@
 	$password='';
 	$database='nem644_befriendersmauritius';
 
-	//connecting to database
-	// $servername='localhost';
-	// $username='root';
-	// $password='';
-	// $database='nem644_befriendersmauritius';
-
 	$connection=mysqli_connect($servername,$username,$password,$database);
 	$conn=mysqli_connect($servername,$username,$password,$database);
 
