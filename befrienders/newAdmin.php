@@ -121,6 +121,7 @@ if(!(isset($_SESSION['staff'])))
             <span style="color:white;">Articles</span>
           </a>
         </li>
+
         <li>
            <a href="#0" onclick="manageevent();"> 
           <!-- <a href="#0" >-->
@@ -146,6 +147,18 @@ if(!(isset($_SESSION['staff'])))
               <span style="color:white;">Update Website</span>
               </a>
               </li>';
+
+              echo '
+              <li>
+                <a href="#0" onclick="configureChatbot();">                 
+                  <svg>
+                    <use xlink:href="#pages"></use>
+                  </svg>
+                  <span style="color:white;">Configure Chatbot</span>
+                </a>
+              </li>';
+
+
           }
         ?>
         
@@ -211,6 +224,8 @@ if(isset($_SESSION['adminWarning'])){
 <section id="articleMainPage" style="display:none;">    </section>
 
 <section id="EventMainInfo" style="display:none;">    </section>
+
+<section id="chatbotsData" style="display:none;">    </section>
 
     <section class="grid " id="landingPage">
 
@@ -383,6 +398,11 @@ if(isset($_SESSION['adminWarning'])){
 
             
             <script>
+
+              function ds(s){
+                alert("HEYA "+s);
+              }
+              
               function approveTestimonial($id){
                 //alert("ID "+$id+" has been approved!");
 
@@ -454,7 +474,26 @@ if(isset($_SESSION['adminWarning'])){
                 });
             }
 
+            function configureChatbot(){
+              $('#backBtn').fadeIn('slow');
 
+                $.ajax({
+                    type:"POST",
+                    url:"configureChatb.php",
+                    success: function(value){
+                      $("#landingPage").hide();
+                        $(".containment").hide();
+                        $("#EventMainInfo").hide();                        
+                        $("#articleMainPage").hide();
+
+                        $("#chatbotsData").show();
+                        $("#chatbotsData").html(value);
+                        
+
+                        
+                    }
+                });
+            }
 
             function managearticle()
             {
@@ -549,6 +588,17 @@ if(isset($_SESSION['adminWarning'])){
 
 
             });
+
+
+            function simulate(val){
+              $.ajax({
+                    url : "fromBot.php?t="+val, 
+                    success: function(result){
+                        // alert(result);
+                        document.getElementById("cbreplyPlaceholder").innerHTML = result;
+                    }
+                })
+            }
         </script>
 
 </body>

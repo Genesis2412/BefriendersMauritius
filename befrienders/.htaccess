@@ -1,0 +1,4 @@
+RewriteEngine on
+
+#RewriteRule ^gettingArchive.php rule [NC] 
+#RewriteRule gettingArchive.php https://www.google.com [NC]  #Force forwarding to prevent access

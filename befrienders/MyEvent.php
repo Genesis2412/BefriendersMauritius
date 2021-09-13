@@ -70,11 +70,11 @@ if(mysqli_num_rows($result)>0){
 
 	        <nav>
 	        	<ul>
-	            	<li><a class="active" href="#">HOME</a></li>
-	            	<li><a href="Events.html">EVENTS</a></li>
+	            	<li><a  href="#">HOME</a></li>
+	            	<li><a class="active" href="Events.html">EVENTS</a></li>
 	            	<li><a href="MainArticle.html">BLOG</a></li>
                     <li>
-                        <a href="">MEMBER</a>
+                        <a href="signin.php">MEMBER</a>
 	                	<ul>
 	                    	
 	                    	<li>
@@ -91,9 +91,9 @@ if(mysqli_num_rows($result)>0){
 	                    	
 	                	</ul>
 	            	</li>
-	            	<li><a href="#aboutUs">ABOUT US</a></li>
-                    <li><a href="#contactUs">CONTACT US</a></li>
-                    <li><a href="#needHelp">NEED HELP?</a></li>
+	            	<li><a href="./#aboutUs">ABOUT US</a></li>
+                    <li><a href="./#contactUs">CONTACT US</a></li>
+                    <li><a href="./#needHelp">NEED HELP?</a></li>
 	          </ul>
 	        </nav>
 

@@ -56,12 +56,13 @@
 	          </ul>
 	        </nav>
 
+			
 	        <!--Hamburger-->
 	        <div class="menu-toggle">
 	          <i class="fa fa-bars" aria-hidden="true"></i>
-	        </div>
+	        </div>		
 	    </header>
-	  	
+		
 	    <!--Carousel-->
         <div id="banner" class="carousel slide" data-ride="carousel">  
           
@@ -239,7 +240,7 @@
                 			</div>
 						</div>
 						<?php if(mysqli_num_rows($query) >= 0)	{	while($lrow=mysqli_fetch_array($query))	{ ?>
-						<div class="carousel-item">
+						<div class="carousel-item"
 							<div class="carousel-caption">
 								<p><?php  echo $lrow['remark']; ?></p>
 								<div id="image-caption"><?php echo $lrow['name']; ?></div>
@@ -275,9 +276,61 @@
 						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59900.560071149346!2d57.43296797910154!3d-20.226253199999977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x217c5b920f420c69%3A0xbfea6c7d66e17059!2sBefrienders%20Mauritius!5e0!3m2!1sen!2smu!4v1604692225860!5m2!1sen!2smu" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 						</div>
                     </div>
+							
+					<div class="col-md-6 container">
+
+					<?php
+					
+						if(isset($_SESSION['testiWarn'])){
+							echo "<br/>";
+						
+							echo '<div id="testimonialFeedback" style="color:black; padding: 4%  10% 4% 10% ;background-color:yellow;"> ';
+							echo $_SESSION['testiWarn'];
+							echo ' <button style="float:right;" id="feedbackOff" class="btn btn-danger"> X </button> ';
+							
+							echo "</div";
+					
+					
+							unset($_SESSION['testiWarn']);
+						}
+					?>
+
+
+							
+						<h4  style="color:white;"> Testimonial Form </h4>	
+						 <span style="color:white;padding-left:5%;font-style:italic;" >Your testimonials could appear on our website.</span>
+						<form name="testimonials" method="POST" action="addTestimonial.php">
+							<div class="form-group">
+								<input type="text" class="form-control" name="name" placeholder="Enter your name">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="message" placeholder="Enter your Message">
+								
+							</div>
+							<div class="form-group">
+								
+								<h5 style="color:white;text-align:center;"> Your feedback: </h5>
+								 <select name="rating" id="rating" style="color:Red;" class="form-control">
+								 	 <option value="0" selected> Make a selection </option>	 
+								 	 <option value="1"> ❤ </option>
+									 <option value="2"> ❤❤</option>
+									 <option value="3"> ❤❤❤</option>
+									 <option value="4"> ❤❤❤❤</option>
+									 <option value="5" > ❤❤❤❤❤</option>
+								 </select>
+							</div>
+
+							<input type="submit" name="TestimonialSubmit" class="btn btn-primary form-control" value="Send testimonial" />
+						</form>
+
+
+                    </div>
+					<span id="testimonial"> &nbsp;</span>
 				</div>
             </div>
 		</section>
+
+	
 
 		<!--Footer-->
 		<div class="footer">
@@ -290,6 +343,11 @@
 	  	<script type="text/javascript">
 	        $(document).ready(function()
 	        {
+
+				$('#feedbackOff').click(function(){
+					$('#testimonialFeedback').hide();
+				});
+				
 	          $('.menu-toggle').click(function()
 	          {
 	            $('nav').toggleClass('active')
