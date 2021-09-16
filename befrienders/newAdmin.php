@@ -467,6 +467,7 @@ if(isset($_SESSION['adminWarning'])){
                         $("#landingPage").hide();
                         $("#articleMainPage").hide();
                         $("#EventMainInfo").hide();
+                        $("#chatbotsData").hide();
                         
                         $(".containment").show();
                         $(".containment").html(value);
@@ -506,6 +507,7 @@ if(isset($_SESSION['adminWarning'])){
                       $("#landingPage").hide();
                         $(".containment").hide();
                         $("#EventMainInfo").hide();
+                        $("#chatbotsData").hide();
                         
                         $("#articleMainPage").show();
                         $("#articleMainPage").html(value);
@@ -526,6 +528,7 @@ if(isset($_SESSION['adminWarning'])){
                       $("#landingPage").hide();
                       $("#articleMainPage").hide();
                         $(".containment").hide();
+                        $("#chatbotsData").hide();
 
                       $("#EventMainInfo").show();
                         $("#EventMainInfo").html(value);
@@ -592,7 +595,8 @@ if(isset($_SESSION['adminWarning'])){
 
             function simulate(val){
               $.ajax({
-                    url : "fromBot.php?t="+val, 
+                    //url : "fromBot.php?t="+val+" &f=0", 
+                    url : "fromBot.php?t="+val+"&flag=0", 
                     success: function(result){
                         // alert(result);
                         document.getElementById("cbreplyPlaceholder").innerHTML = result;

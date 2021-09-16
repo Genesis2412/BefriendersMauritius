@@ -152,6 +152,40 @@
 			</div>
 		</section>
 
+
+		<!-- Chatbot pop-up form -->
+		<div class="modal fade" id="chatbotModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Chat with us</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			
+			<div class="modal-body" >
+
+				<div id="chatbContain" style="overflow: scroll;   overflow-x: hidden;  height: 310px;">
+					<div id="chatlogs">
+						<div id="msg"> </div>
+						<div id="thinking"></div>
+    				</div>					
+				
+				
+
+
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div id="composer" style="padding-right:25%;"> <input type="text" id="composerField" style="padding:10px;" onkeydown="if(event.keyCode == 13){ userReply(this.value); }"  placeholder="Enter message"/> </div> 
+			</div>
+		
+			</div>
+		</div>
+		</div>
+		<!--###############################################################-->
+
 		<span id="needHelp">&nbsp;</span>
 		<!--Need Help-->
 		<a name="needHelp"></a>
@@ -162,7 +196,9 @@
 					<div class="col-sm-3" data-aos="fade-right">
 						<div id="emergency">
 							<h6 style="color: #005f20;">CHAT WITH US</h6>
-							<a href="chat.html" target="blank"><i class="fa fa-headphones"></i></a>
+							<!-- <a href="chat.html" target="blank"><i class="fa fa-headphones"></i></a> -->
+							<button id="chatbotToggle" style="background-color:transparent;border:0px;">  <i class="fa fa-headphones"></i>  </button>
+							 
 							<p>We are here to listen to you
 							<br><br>
 							<a href="tel:+230 8009393"><span id="emerlink">HOTLINE : +230 8009393</span></a>
@@ -341,6 +377,18 @@
 
 		<!--Navigation Bar Javascript-->
 	  	<script type="text/javascript">
+
+		  function dont(){
+			  //Start of ajax
+				const xhttp = new XMLHttpRequest();
+				xhttp.onload = function() {
+					document.getElementById("chatbContain").innerHTML = this.responseText;
+				}
+				xhttp.open("GET", "zz.html");
+				xhttp.send();
+
+				//End of ajax
+		  }
 	        $(document).ready(function()
 	        {
 
@@ -351,8 +399,86 @@
 	          $('.menu-toggle').click(function()
 	          {
 	            $('nav').toggleClass('active')
-	          })      
+	          });
+
+
+			    
+			  
+			  
+
+
 	        });	          
+		</script>
+
+		<script> 
+		// Chatbot Script
+
+		function userReply(msgs){
+                setTimeout(function(){ 
+                    document.getElementById('msg').innerHTML += '<div class="user"> '+msgs+' </div>';
+                }, 500);   
+                botReplies(msgs);                 
+
+                document.getElementById("composerField").value=" ";
+				
+                
+            }
+
+			function botReplies(usermsg){                
+                var result = "";
+				var reply = "";
+                /* $.ajax({
+                    url : "fromBot.php?t="+usermsg, 
+                    success: function(result){
+                        reply=result;
+                    }
+                }) */
+
+				//Start of ajax
+				var ChatBurl = "fromBot.php?t="+usermsg;
+				const xhttp = new XMLHttpRequest();
+				xhttp.onload = function() {
+					
+					reply = this.responseText;
+				}
+				xhttp.open("POST", ChatBurl );
+				xhttp.send();
+
+				//End of ajax
+
+
+                setTimeout(function(){ 
+                    document.getElementById('msg').innerHTML += '<div class="bot"> '+reply+' </div>';
+					document.getElementById('thinking').scrollIntoView({behavior: "smooth",block: "end", inline: "nearest"});
+                }, 1000);
+
+				
+				
+
+            }
+
+
+			$(document).ready(function()
+	        { 
+				$("#chatbotToggle").click(function(){	
+				
+					$('#chatbotModal').modal('show');
+					setTimeout(function(){            
+						document.getElementById('msg').innerHTML += '<div class="bot"> Hello! </div>';
+
+					}, 1200); 
+
+
+
+
+			  	});  
+
+				  
+
+
+			})
+			
+			
 		</script>
 		
 		<script>
