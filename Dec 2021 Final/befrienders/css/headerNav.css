@@ -1,0 +1,155 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Navigation bar*/
+header
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 100px;
+    background-color: #585858f8;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+    justify-content: flex-end;
+    position: fixed;
+
+}
+
+header .logo
+{
+    height: 50px;
+    line-height: 50px;
+    font-size: 24px;
+    float: left;
+    font-weight: bold;
+}
+
+header .logo img
+{
+    height: 45px;
+}
+
+header nav
+{
+    float: right;
+}
+
+header nav ul
+{
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul
+{
+    list-style: none;
+}
+
+header nav ul li a
+{
+    height: 55px;
+    line-height: 50px;
+    padding: 0 20px;
+    text-decoration: none;
+    display: block;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active
+
+{
+    background: #39B282;
+    text-decoration: none;
+}
+
+header nav ul li a:active,
+header nav ul li a:link,
+header nav ul li a:visited
+{
+    color: #fcff5c;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.menu-toggle
+{
+    color: #000;
+    float: right;
+    line-height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+}
+
+header ul li ul
+{
+    position: absolute;
+    background-color: #585858f8;
+    display: block;
+    transition: 0.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+header ul li:hover ul
+{
+    opacity: 1;
+    visibility: visible;
+}
+
+@media(max-width: 991px)
+{
+/*navbar*/
+header
+{
+    padding:0 20px;
+}
+
+.menu-toggle
+{
+    display: block;
+}
+
+header nav
+{
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 50px);
+    background-color: #585858f8;
+    top: 50px;
+    left: -100%;
+    transition: 0.5s;
+}
+header nav.active
+{
+    left: 0;
+}
+header nav ul
+{
+    display: block;
+    text-align: center;
+}
+
+header .logo img
+{
+    height: 35px;
+}
+
+header nav ul li a
+{
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+header ul li ul
+{
+    width: 100%;
+}
+
+}

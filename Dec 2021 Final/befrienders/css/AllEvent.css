@@ -1,0 +1,50 @@
+@media(max-width: 991px){ /* Mobile View*/
+
+    #header img{
+       width: 70px;
+       height: 40px;
+    
+    }
+    #HeaderLinks{
+        text-align: center;
+        left: 10px;
+    }
+     #Trendtxt, #EventTrending{
+       display:none;
+    }
+    #EventCoverImg{
+        width:100%;
+         height:250px;
+    }
+    #Instr{
+        display: none;
+    }
+    #searchQueryHolder{
+        padding-top: 50px;
+    }
+    
+}
+
+@media screen and (min-width: 400px){ /* Desktop/Laptop view */
+
+    #header img{
+        padding-top:10px;
+        padding-left: 25px;
+        padding-bottom: 10px;
+
+        width: 150px;
+        height: 70px;
+    
+    }
+    #HeaderLinks{
+        float:right;
+        padding-top:20px;
+        padding-right:15px; /* Prevent displaying element at right end border of website*/
+        
+    }
+    #EventCoverImg{
+        width:100%;
+         height:50%;
+    }
+
+}

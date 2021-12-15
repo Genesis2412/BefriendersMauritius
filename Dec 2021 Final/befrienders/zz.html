@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatbot</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <script>
+        
+    </script>
+    <style>
+        div.bot{
+            background-color: rgb(211, 211, 211);
+            padding:10px;
+            margin-bottom: 25px;
+            padding-right: 70%;
+            
+            border : 1px solid rgb(136, 136, 136);
+            border-radius: 10px;
+           
+        }
+        div.user{
+            background-color: #1877f2;
+            padding:10px;
+            margin-bottom: 25px;
+            padding-left: 70%;
+            border : 1px solid #146ada;
+            border-radius: 10px;
+            color:white;
+        }
+    
+
+        
+
+        body{
+            background-color: lightblue;
+            z-index: -5;
+        }
+        #composer{
+            
+            width:20%;
+            margin: auto;
+        }
+
+        #composerField{
+            padding:10% 20% 10% 20%; /* t r b l  */
+        }
+   
+    </style>
+
+
+
+</head>
+
+<body >
+    <div id="chatlogs">
+        <h1 id="headings"> Chatlog</h1>
+        <div id="msg">
+            
+            <!-- <div class="bot"> Hi. How may I help you? </div>
+            <div class="user"> Im scared! </div>
+            <div class="bot"> Dont Worry! We're here to help! </div>
+            <div class="bot"> In case you want additional space ( more than the default ) between div rows then you can add the following code before/after the start of the div row depending on where you want the additional space. </div>
+            <div class="user"> In case you want additional space ( more than the default )  </div> -->
+           
+            <div  id="thinking"></div> 
+        </div>
+    </div>
+
+    <script>
+        //thinking bot
+        // var symbol = "Ⓜ️";
+        // var startTime = 500;
+        // var timeInterval = 500;
+        
+            //document.getElementById("thinking").innerHTML=""; //Ensure field is empty
+            // function waiting() {
+            //     setTimeout(function(){ document.getElementById("thinking").innerHTML += symbol; }, startTime); 
+            //     setTimeout(function(){ document.getElementById("thinking").innerHTML += symbol; }, startTime+(1*timeInterval)); 
+            //     setTimeout(function(){ document.getElementById("thinking").innerHTML += symbol; }, startTime+(2*timeInterval)); 
+            //     setTimeout(function(){ document.getElementById("thinking").innerHTML += symbol; }, startTime+(3*timeInterval)); 
+                
+              
+            // }
+            //waiting();
+            
+            // For testing
+             setTimeout(function(){              
+                 //document.getElementById('msg').innerHTML=" ";    
+                 document.getElementById('msg').innerHTML += '<div class="bot"> Hello! </div>';
+
+             }, 1000); 
+
+            function botReplies(usermsg){                
+                var result = "";
+
+                $.ajax({
+                    url : "fromBot.php?t="+usermsg, 
+                    success: function(result){
+                        reply=result;
+                    }
+                })
+                setTimeout(function(){ 
+                    document.getElementById('msg').innerHTML += '<div class="bot"> '+reply+' </div>';
+                }, 1500);
+
+            }
+
+            function userReply(msgs){
+                setTimeout(function(){ 
+                    document.getElementById('msg').innerHTML += '<div class="user"> '+msgs+' </div>';
+                }, 500);   
+                botReplies(msgs);
+                  
+
+                document.getElementById("composerField").value="";
+                
+            }
+            
+
+    </script>
+    
+    <hr/>
+    <div id="composer"> <input type="text" id="composerField" onkeydown="if(event.keyCode == 13){ userReply(this.value); }" id="userBox" placeholder="Enter message"/> </div> 
+</body>
+</html>
