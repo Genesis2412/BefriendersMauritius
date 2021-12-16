@@ -1,0 +1,20 @@
+ErrorDocument 404  http://localhost/befrienders/error
+
+
+RewriteEngine on
+RewriteRule ^error notfound.php
+
+RewriteRule ^allevents events.html [NC,L]
+RewriteRule ^blog MainArticle.html [NC,L]
+
+RewriteRule ^connect signin.php [NC,L]
+ReWriteRule ^admin admin.php [NC,L]
+
+RewriteRule ^article/([0-9]*)$ Article.php?id=$1 [NC,L]
+RewriteRule ^event/([0-9]*)$ MyEvent.php?Eventid=$1 [NC,L]
+ 
+RewriteRule ^secure signin.php [NC,L]
+
+RewriteRule ^admin admin.php [NC,L]
+
+RewriteRule ^newadmin.php admin [NC,L]

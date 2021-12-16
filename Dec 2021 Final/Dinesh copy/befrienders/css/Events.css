@@ -1,0 +1,30 @@
+
+#header{
+    background-color: green;
+}
+
+.LinksHead{
+    padding-left:20px;
+    padding-right: 20px;
+    text-decoration: none;
+    color:white;
+}
+.LinksHead:hover{
+    text-decoration: none;
+    color:lightgrey;
+}
+
+#EventMain{
+    position: relative;
+    text-align: center;
+    
+   }
+#EventMain p{
+    position: absolute;
+    color:white;
+    position: absolute;
+    left:50%;
+    top:50%;
+    font-size: xx-large;
+    transform: translate(-50%, -50%);
+}

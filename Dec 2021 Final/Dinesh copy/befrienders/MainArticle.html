@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+    <head>
+        <title> All Articles | Befrienders Mauritius </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> <!--Bootstrap CDN -->
+        <!-- <script src="js//jquery-3.4.1.min.js"></script> jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--FontAwesome CDN -->
+        <link rel="stylesheet" href="css/Events.css"> <!-- Common sharable css file for Events -->
+        <link rel="stylesheet" href="css/AllArticle.css"> <!-- css file for All Articles -->
+        <link rel="stylesheet" href="css//index.css">
+        <link rel="stylesheet" href="./css/index.css">
+        <link rel="stylesheet" type="text/css" href="css//footer.css">
+
+    </head>
+    <style>
+        .MiddleOne{
+            float:left;    
+            color:black;
+        }
+        .EmptySpacer{
+            float:right;
+        }
+    </style>
+
+    <script>
+
+        function dispTrending(){
+            $.ajax({
+                    type:"POST",
+                    url:"WhatsTrending.php",
+                    success: function(value){
+                        $(".TrendingNowInfo").html(value);
+                    }
+                });
+
+        }
+
+        function disp5RecentArt(){
+            $.ajax({
+                    type:"POST",
+                    url:"Disp5MostRecentArticle.php",
+                    success: function(value){
+                        $("#fiverArticle").html(value);
+                    }
+                });
+
+        }
+
+        function DisplayAllArt(){
+            $.ajax({
+                    type:"POST",
+                    url:"DisplayAllArticles.php",
+                    success: function(value){
+                        $("#AllArticlesDisplayer").html(value);
+                    }
+                });
+
+        }
+        
+        function DisplayAlertSession(){
+            $.ajax({
+                    type:"POST",
+                    url:"WarningSessionSystem.php",
+                    success: function(value){
+                        $("#SessionWarns").html(value);
+                    }
+                });
+
+        }
+
+    </script>
+    <style>
+        #TrendyData{
+            padding-left: 35%;
+            padding-top:5%;
+        }
+    </style>
+    
+    <body onload=" dispTrending(); disp5RecentArt(); DisplayAllArt(); DisplayAlertSession(); ">
+        <header>
+	        <div class="logo">
+	          <a href="./"><img src="./img/logo.png" alt="Befrienders Mauritius"></a>
+	        </div>
+
+	        <nav>
+	        	<ul>
+	            	<li><a  href="./">HOME</a></li>
+	            	<li><a  href="allevents">EVENTS</a></li>
+	            	<li><a class="active" href="blog">BLOG</a></li>
+                    <li>
+                        <a href="secure">MEMBER</a>
+	                	
+	            	</li>
+	            	<li><a href="./#aboutUs">ABOUT US</a></li>
+                    <li><a href="./#contactUs">CONTACT US</a></li>
+                    <li><a href="./#needHelp">NEED HELP?</a></li>
+	          </ul>
+	        </nav>
+
+	        <!--Hamburger-->
+	        <div class="menu-toggle">
+	          <i class="fa fa-bars" aria-hidden="true"></i>
+	        </div>
+	    </header>    
+
+        <div id="TrendyData" >
+            <span style="color:white;background-color:#CE0606;border:1px solid grey;padding:5px;">  What's Trending </span>
+            <span  class="TrendingNowInfo" style="padding-left: 10px;border:1px solid grey;padding:5px;padding-right:55px;padding-left: 10px;">  </span>
+        </div>
+
+        <div id="MobileTrend"  >  Trending: <span class="TrendingNowInfo"> </span></div>
+        <div id="SessionWarns" style="padding-left:25px;padding-right: 25px;padding-top:10px;">
+         
+       </div>
+
+       <div id="fiverArticle" style="padding-left: 5%;padding-top: 20px;padding-bottom: 10px;">
+    </div>
+
+    <div class="EmptySpacer"> </div>
+
+
+
+        
+        
+        <div style="padding-top:20%;padding-left: 20px;"  id="AllArticlesDisplayer">
+
+        </div>
+
+
+        <footer class="footer" style="background-color: rgb(99, 165, 99);">
+            <div class="footer-left">
+                <h5>Befrienders Mauritius</h5>
+                <p>We an help prevent suicide. Befrienders provide 7/7 9hr to 21 hr  free and confidential support for people in distress, prevention and crisis resources for you or your loved ones.</p>
+            </div>
+        
+            <div class="footer-right">
+                <h5>Address</h5>
+                <i class="fas fa-map-marked-alt"></i><p>Befrienders(Mauritius)<br>1st Floor Flat,<br> 152 Royal Road,<br> Beau Bassin</p>
+                <i class="fa fa-tty"></i><p>Office: 4670160</p>
+                <i class="fa fa-mobile"></i><p>Mobile: 54837233</p>
+                <i class="fa fa-fire"></i><p>Hotline: 8009393</p>
+                <i class="fa fa-envelope"></i><p>Email: <a href="mailto:adminofficer.befrienders@gmail.com" style="color:white;"> Befrienders Mauritius</a> </p>
+            </div>
+    
+            <div class="footer-bottom">
+                <p>All Right reserved by &copy;Befrienders</p>
+            </div>
+    
+        </footer>
+    </body>
+</html>
