@@ -14,17 +14,15 @@
         }
     }
 
-    $search="SELECT name, remark FROM testimonial WHERE ID != 1 AND status='on';"; //Will only displays the testimonials approved by Befrienders
+    $search="SELECT name, remark FROM testimonial WHERE ID != 1 AND status='on';";
     $query = mysqli_query($connection,$search);
+    $fetch=array();
 
-    $select="SELECT name, remark FROM testimonial WHERE ID=1";
-    $find= mysqli_query($connection,$select);
-
-    if(mysqli_num_rows($find) >= 0)
+    if(mysqli_num_rows($query) >= 0)
     {
-        while($lrow=mysqli_fetch_array($find))
+        while($lrow=mysqli_fetch_array($query))
         {
             $fetch[] = $lrow;
         }
-    }
+    }   
 ?>

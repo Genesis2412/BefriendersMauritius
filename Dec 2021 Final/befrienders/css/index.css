@@ -403,6 +403,34 @@ h2
     height: 250px;
 }
 
+ /* For chatbot */
+
+#chatbotToggle:hover{
+    color:green;
+}
+
+
+div.bot{
+    background-color: rgb(211, 211, 211);
+    padding:10px;
+    margin-bottom: 25px;
+    padding-right: 70%;
+    
+    border : 1px solid rgb(136, 136, 136);
+    border-radius: 10px;
+   
+}
+div.user{
+    background-color: #1877f2;
+    padding:10px;
+    margin-bottom: 25px;
+    padding-left: 70%;
+    border : 1px solid #146ada;
+    border-radius: 10px;
+    color:white;
+}
+/* End of chatbot CSS */
+
 .footer
 {
     background-color: #585858f8;

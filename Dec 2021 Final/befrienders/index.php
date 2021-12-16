@@ -9,46 +9,14 @@
   		<meta name="keyword" content="">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">        
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 		<link rel="stylesheet" href="./css/index.css">
-		<title>HOMEPAGE || BEFRIENDERS</title>
-		
-		<style>
-		    /* For chatbot */
-
-                #chatbotToggle:hover{
-                    color:green;
-                }
-                
-                
-                div.bot{
-                    background-color: rgb(211, 211, 211);
-                    padding:10px;
-                    margin-bottom: 25px;
-                    padding-right: 70%;
-                    
-                    border : 1px solid rgb(136, 136, 136);
-                    border-radius: 10px;
-                   
-                }
-                div.user{
-                    background-color: #1877f2;
-                    padding:10px;
-                    margin-bottom: 25px;
-                    padding-left: 70%;
-                    border : 1px solid #146ada;
-                    border-radius: 10px;
-                    color:white;
-                }
-            /* End of chatbot CSS */
-		</style>
+		<title>Befrienders</title>
   	</head>
   	<body>
         <!--Navigation Bar-->
@@ -108,14 +76,6 @@
             <div class="carousel-item">
 				<img src="<?php echo $data[2][2]; ?>">
             </div>
-  
-            <a class="carousel-control-prev" href="#banner" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-
-            <a class="carousel-control-next" href="#banner" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-			</a>
         </div>	    
 
 		<span id="aboutUs">&nbsp;</span>
@@ -125,11 +85,11 @@
 				<h2>About Us</h2>
 				<div class="row">
                     <div class="col-md-6">
-						<img src="<?php echo $data[3][2]; ?>" data-aos="fade-right">
+						<img src="<?php echo $data[3][2]; ?>">
 					</div>
 
 					<div class="col-md-6">
-						<div id="aboutContent" data-aos="fade-left">
+						<div id="aboutContent">
 							<p>
                             	<?php echo $data[3][3]?>
 							</p>
@@ -143,8 +103,8 @@
         <!--Our Team-->
 		<section class="teamdetails">            
 			<h2>Our Team</h2>
-			<img src="<?php echo $data[4][2]; ?>" data-aos="zoom-in">
-			<p style="font-style: italic;" data-aos="zoom-in">Befrienders Mauritius Team</p>
+			<img src="<?php echo $data[4][2]; ?>">
+			<p style="font-style: italic;">Befrienders Mauritius Team</p>
 			<p><?php echo $data[4][3] ?></p>
         </section>
 
@@ -154,7 +114,7 @@
 			<div class="container">
 				<h2>Our Promise</h2>
 				<div class="row">
-					<div class="col-md-4 text-center" data-aos="slide-up">
+					<div class="col-md-4 text-center">
 						<div id="icon">
 							<i class="fa fa-trophy"></i>
 						</div>
@@ -162,7 +122,7 @@
 						<p><?php echo $data[5][3] ?></p>                    
 					</div> 
 
-					<div class="col-md-4 text-center" data-aos="slide-up">
+					<div class="col-md-4 text-center">
 						<div id="icon">
 							<i class="fa fa-eye"></i>
 						</div>   
@@ -170,7 +130,7 @@
 						<p><?php echo $data[6][3] ?></p>                
 					</div>
 
-					<div class="col-md-4 text-center" data-aos="slide-up">
+					<div class="col-md-4 text-center">
 						<div id="icon">
 							<i class="fa fa-key"></i>
 						</div>
@@ -185,38 +145,30 @@
 		
 		<!-- Chatbot pop-up form -->
 		<div class="modal fade" id="chatbotModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Chat with us</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
+			<div class="modal-dialog">
+				<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Chat with us</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				
+				<div class="modal-body" >
+					<div id="chatbContain" style="overflow: scroll;   overflow-x: hidden;  height: 310px;">
+						<div id="chatlogs">
+							<div id="msg"> </div>
+							<div id="thinking"></div>
+	    				</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div id="composer" style="padding-right:25%;"> <input type="text" id="composerField" style="padding:10px;" onkeydown="if(event.keyCode == 13){ userReply(this.value); }"  placeholder="Enter message"/> </div> 
+				</div>
 			
-			<div class="modal-body" >
-
-				<div id="chatbContain" style="overflow: scroll;   overflow-x: hidden;  height: 310px;">
-					<div id="chatlogs">
-						<div id="msg"> </div>
-						<div id="thinking"></div>
-    				</div>					
-				
-				
-
-
 				</div>
 			</div>
-			<div class="modal-footer">
-				<div id="composer" style="padding-right:25%;"> <input type="text" id="composerField" style="padding:10px;" onkeydown="if(event.keyCode == 13){ userReply(this.value); }"  placeholder="Enter message"/> </div> 
-			</div>
-		
-			</div>
-		</div>
-		</div>
-		<!--###############################################################-->
-		
-		
+		</div>		
 		
 
 		<span id="needHelp">&nbsp;</span>
@@ -226,7 +178,7 @@
 			<h2>Need Help?</h2>
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-sm-3" data-aos="fade-right">
+					<div class="col-sm-3">
 						<div id="emergency">
 							<h6 style="color: #005f20;">CHAT WITH US</h6>
 							
@@ -248,7 +200,7 @@
 							<p><a href="tel:115"><span id="emerlink">Tel: 115</span></a></p>
 						</div>
 					</div>
-					<div class="col-sm-3" id="problem" data-aos="zoom-in">
+					<div class="col-sm-3" id="problem">
 						<h5>Why you have problems?</h5>
 						<ul>
 							<li>You cannot face difficulties in your personal life, family life, professional life
@@ -262,7 +214,7 @@
 							<li>You couldn't achieve your ambitions.</li>
 						</ul>
 					</div>
-					<div class="col-sm-3" id="happen" data-aos="zoom-in">
+					<div class="col-sm-3" id="happen">
 						<h5>What happens when you have problem?</h5>
 						<p style="font-weight: bold">You feel discouraged, sad, and feel like quitting everything and go... </p>
 						<ul>
@@ -278,7 +230,7 @@
 							<li><b>Suicide is not a solution</b></li>
 						</ul>
 					</div>
-					<div class="col-sm-3" id="effect" data-aos="zoom-in">
+					<div class="col-sm-3" id="effect">
 					<h5>What effect problems have on you?</h5>
 						<p style="font-weight: bold">You can</p>
 						<ul>
@@ -297,31 +249,47 @@
 			</div>
 		</section>
 
-		<!--Testimonials-->
-		<section class="test">
-			<h2>Testimonials</h2>
-			<div class="container">
-    			<div id="slides" class="carousel slide" data-ride="carousel">
-        			<div class="carousel-inner">
-            			<div class="carousel-item active">
-                			<div class="carousel-caption">
-                    			<p><?php //echo $fetch[0][1]; ?></p> <!-- commented due to crash -->
-                    			<div id="image-caption"><?php //echo $fetch[0][0]; ?></div>
-                			</div>
-						</div>
-						<?php if(mysqli_num_rows($query) >= 0)	{	while($lrow=mysqli_fetch_array($query))	{ ?>
-						<div class="carousel-item"
-							<div class="carousel-caption">
-								<p><?php  echo $lrow['remark']; ?></p>
-								<div id="image-caption"><?php echo $lrow['name']; ?></div>
+		<?php
+			$arrayLength = count($fetch);
+
+			if($arrayLength > 0){
+		?>
+
+			<!--Testimonials-->
+			<section class="test">
+				<h2>Testimonials</h2>
+				<div class="container">
+	    			<div id="slides" class="carousel slide" data-ride="carousel">
+	        			<div class="carousel-inner">
+	            			<div class="carousel-item active">
+	                			<div class="carousel-caption">
+	                    			<p><?php echo $fetch[0][1]?></p>
+	                    			<div id="image-caption"><?php echo $fetch[0][0] ?></div>
+	                			</div>
 							</div>
+							<?php  
+								
+								for($x=0; $x<$arrayLength; $x++)
+							    {
+					    	?>
+							        <div class="carousel-item">
+										<div class="carousel-caption">
+											<p><?php echo $fetch[$x][1]; ?></p>
+											<div id="image-caption"><?php  echo $fetch[$x][0]; ?></div>
+										</div>
+									</div> 
+						    <?php
+								}
+							?>					
+							      			
 						</div> 
-						<?php } } ?>          			
-					</div> 
-					<a class="carousel-control-prev" href="#slides" data-slide="prev"> <i class='fa fa-arrow-left'></i> </a> <a class="carousel-control-next" href="#slides" data-slide="next"> <i class='fa fa-arrow-right'></i> </a>
-    			</div>
-			</div>
-		</section>
+						<a class="carousel-control-prev" href="#slides" data-slide="prev"> <i class='fa fa-arrow-left'></i> </a> <a class="carousel-control-next" href="#slides" data-slide="next"> <i class='fa fa-arrow-right'></i> </a>
+	    			</div>
+				</div>
+			</section>
+	<?php
+			}
+	?>
 
 		<span id="contactUs">&nbsp;</span>
 		<!--Contact Us-->
@@ -329,7 +297,7 @@
 			<div class="container">
 				<h2>Get In Touch</h2>
 				<div class="row">
-                    <div class="col-md-6 contact-info" data-aos="fade-right">   
+                    <div class="col-md-6 contact-info">   
 						<div class="follow"><b><?php echo $data[8][4] ?> </b><i class="fa fa-map-marker"></i><span id="contactl"><?php echo $data[8][3] ?></span></div>
 						<div class="follow" style="color: #fc3903; font-size: 18px;"><b><?php echo $data[9][4] ?> </b><i class="fa fa-phone"></i><a href="tel:+2308009393"><span id="contactl"><?php echo $data[9][3] ?></span></a></div>                             
 						<div class="follow"><b><?php echo $data[10][4] ?> </b><i class="fa fa-phone"></i><a href="tel:+2304670160"><span id="contactl"><?php echo $data[10][3] ?></span></a></div>
@@ -342,7 +310,7 @@
                     </div>
 
                     <div class="col-md-6">
-						<div id="map" data-aos="zoom-in">
+						<div id="map">
 						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59900.560071149346!2d57.43296797910154!3d-20.226253199999977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x217c5b920f420c69%3A0xbfea6c7d66e17059!2sBefrienders%20Mauritius!5e0!3m2!1sen!2smu!4v1604692225860!5m2!1sen!2smu" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 						</div>
                     </div>
@@ -499,13 +467,5 @@
 			
 			
 		</script>
-		
-		
-		
-		
-		<script>
-			AOS.init();
-		</script>
-
 	</body>
 </html>
