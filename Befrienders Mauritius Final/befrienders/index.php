@@ -181,8 +181,6 @@
 					<div class="col-sm-3">
 						<div id="emergency">
 							<h6 style="color: #005f20;">CHAT WITH US</h6>
-							
-							<!-- <a href="chat.html" target="blank"><i class="fa fa-headphones"></i></a> -->
 							<button id="chatbotToggle" style="background-color:transparent;border:0px;">  <i class="fa fa-headphones"></i>  </button>
 							
 							<p>We are here to listen to you
@@ -332,41 +330,40 @@
 							unset($_SESSION['testiWarn']);
 						}
 					?>
-
-
-							
-						<!--<h4  style="color:white;"> Testimonial Form </h4>	-->
-						<!-- <span style="color:white;padding-left:5%;font-style:italic;" >Your testimonials could appear on our website.</span>-->
-						<!--<form name="testimonials" method="POST" action="addTestimonial.php">-->
-						<!--	<div class="form-group">-->
-						<!--		<input type="text" class="form-control" name="name" placeholder="Enter your name">-->
-						<!--	</div>-->
-						<!--	<div class="form-group">-->
-						<!--		<input type="text" class="form-control" name="message" placeholder="Enter your Message">-->
-								
-						<!--	</div>-->
-						<!--	<div class="form-group">-->
-								
-						<!--		<h5 style="color:white;text-align:center;"> Your feedback: </h5>-->
-						<!--		 <select name="rating" id="rating" style="color:Red;" class="form-control">-->
-						<!--		 	 <option value="0" selected> Make a selection </option>	 -->
-						<!--		 	 <option value="1"> ❤ </option>-->
-						<!--			 <option value="2"> ❤❤</option>-->
-						<!--			 <option value="3"> ❤❤❤</option>-->
-						<!--			 <option value="4"> ❤❤❤❤</option>-->
-						<!--			 <option value="5" > ❤❤❤❤❤</option>-->
-						<!--		 </select>-->
-						<!--	</div>-->
-
-						<!--	<input type="submit" name="TestimonialSubmit" class="btn btn-primary form-control" value="Send testimonial" />-->
-						<!--</form>-->
-
-
                     </div>
 					<span id="testimonial"> &nbsp;</span>
 				</div>
             </div>
 		</section>
+
+
+		<div class="addTestimonial">							
+			<h2>How our services helped you?</h2>	
+			 <p>Your testimonials could appear on our website.</p>
+			<form name="testimonials" method="POST" action="addTestimonial.php">
+				<div class="form-group">
+					<input type="text" class="form-control" name="name" placeholder="Enter your name">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" name="message" placeholder="Enter your Message">
+					
+				</div>
+				<div class="form-group">
+					
+					<h5 style="color:white;text-align:center;"> Your feedback: </h5>
+					 <select name="rating" id="rating" style="color:Red;" class="form-control">
+					 	 <option value="0" selected> Make a selection </option>	 
+					 	 <option value="1"> ❤ </option>
+						 <option value="2"> ❤❤</option>
+						 <option value="3"> ❤❤❤</option>
+						 <option value="4"> ❤❤❤❤</option>
+						 <option value="5" > ❤❤❤❤❤</option>
+					 </select>
+				</div>
+
+				<input type="submit" name="TestimonialSubmit" class="btn btn-primary form-control" value="Send testimonial" />
+			</form>
+		</div>
 
 	
 
@@ -374,7 +371,7 @@
 		<div class="footer">
 	        <img id="logoFooter" src="">
 	        <img src="./img/logo.png">
-	        <p>&copy; 2020 All rights reserved</p>
+	        <p>&copy; <script>document.write(new Date().getFullYear())</script> All rights reserved</p>
 		</div>
 
 		<!--Navigation Bar Javascript-->
@@ -453,19 +450,10 @@
 					setTimeout(function(){            
 						document.getElementById('msg').innerHTML += '<div class="bot" > Hello! </div>';
 
-					}, 1200); 
+					}, 1200);
 
-
-
-
-			  	});  
-
-				  
-
-
-			})
-			
-			
+			  	});
+			})		
 		</script>
 	</body>
 </html>

@@ -431,8 +431,28 @@ div.user{
 }
 /* End of chatbot CSS */
 
+.addTestimonial
+{
+    margin-top: 40px;
+    text-align: center;
+
+}
+
+.addTestimonial p {
+    margin-top: 20px;
+    color: red;
+    font-weight: bold;
+}
+
+.addTestimonial form{
+    width: 50%;
+    margin-left: 25%;
+}
+
+
 .footer
 {
+    margin-top: 40px;
     background-color: #585858f8;
     color: #fff;
     padding:10px;    
