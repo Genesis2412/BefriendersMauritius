@@ -73,28 +73,26 @@ font-size:50pt;
 	        	<ul>
 	            	<li><a  href="./">HOME</a></li>
 	            	<li><a href="Events.html">EVENTS</a></li>
-	            	<li><a href="MainArticle.html">BLOG</a></li>
-                    <li>
-                        <a class="active" href="">MEMBER</a>
-	                	<ul>
-	                    	
-	                    	<li>
-	                        	<!--Hide/show links-->
-		                        <?php if(isset($_SESSION['Username'])){
-									echo '<div style="padding:20px;color:white;"> Welcome '.$_SESSION["Username"].'<a href="logout.php">LOGOUT</a> </div>';
-
-								}
-								else{
-									echo '<a href="signin.php">LOGIN</a>';
-								}
-		                    ?>
-	                    	</li>
-	                    	
-	                	</ul>
-	            	</li>
+	            	<li><a href="MainArticle.html">BLOG</a></li>                   
 	            	<li><a href="./#aboutUs">ABOUT US</a></li>
-                    <li><a href="./#contactUs">CONTACT US</a></li>
-                    <li><a href="./#needHelp">NEED HELP?</a></li>
+                <li><a href="./#contactUs">CONTACT US</a></li>
+                <li><a href="./#needHelp">NEED HELP?</a></li>
+                 <li>
+                      <a class="active" href="">ADMIN</a>
+                      <ul>                        
+                        <li>
+                          <!--Hide/show links-->
+                          <?php if(isset($_SESSION['Username'])){
+                          echo '<div style="padding:20px;color:white;"> Welcome '.$_SESSION["Username"].'<a href="logout.php">LOGOUT</a> </div>';
+                          }
+                          else{
+                            echo '<a href="signin.php">LOGIN</a>';
+                          }
+                          ?>
+                        </li>                        
+                    </ul>
+                </li>
+
 	          </ul>
 	        </nav>
 
@@ -149,6 +147,13 @@ unset($_SESSION['LoginWarns']);
 </div>
 </form>
     </div>
+    </div>
+
+    <!--Footer-->
+    <div class="footer" style="position:absolute;bottom: 0;">
+          <img id="logoFooter">
+          <img src="./img/logo.png">
+          <p>&copy; <script>document.write(new Date().getFullYear())</script> All rights reserved</p>
     </div>
 
 

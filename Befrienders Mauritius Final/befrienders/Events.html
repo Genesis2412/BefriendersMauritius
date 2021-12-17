@@ -58,6 +58,23 @@
        }
             
         </style>
+
+        <!--Navigation Bar Javascript-->
+        <script type="text/javascript">
+            $(document).ready(function()
+            {
+
+                $('#feedbackOff').click(function(){
+                    $('#testimonialFeedback').hide();
+                });
+                
+              $('.menu-toggle').click(function()
+              {
+                $('nav').toggleClass('active')
+              })      
+            });           
+        </script>
+        
         <script>
             function dispTrendingEvent(){
                 $.ajax({
@@ -105,13 +122,12 @@
 	            	<li><a  href="./">HOME</a></li>
 	            	<li><a class="active" href="allevents">EVENTS</a></li>
 	            	<li><a href="blog">BLOG</a></li>
-                    <li>
-                        <a href="secure">MEMBER</a>
-	                	
-	            	</li>
 	            	<li><a href="./#aboutUs">ABOUT US</a></li>
                     <li><a href="./#contactUs">CONTACT US</a></li>
                     <li><a href="./#needHelp">NEED HELP?</a></li>
+                    <li>
+                        <a href="secure">ADMIN</a>                        
+                    </li>
 	          </ul>
 	        </nav>
 
@@ -195,7 +211,7 @@
             </div>
     
             <div class="footer-bottom">
-                <p>All Right reserved by &copy;Befrienders</p>
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> All rights reserved</p>
             </div>
     
         </footer>

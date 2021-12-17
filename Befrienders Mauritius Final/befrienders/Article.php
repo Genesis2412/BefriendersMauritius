@@ -78,19 +78,6 @@
 
 ?>
 <body>
-    <!-- <nav> 
-        <div id="header"> 
-            <img src="img/logo.png" width="150px" height="70px" alt="Logo" />
-            <div class="text-right" id="HeaderLinks" > 
-                <a href="" class="LinksHead"> Homepage </a>
-                <a href="" class="LinksHead"> Contact Us </a>
-                <a href="" class="LinksHead"> Login Us </a>
-                
-                
-            </div>
-        </div>
-    </nav>  -->
-
         <!--Navigation Bar-->
         <header>
 	        <div class="logo">

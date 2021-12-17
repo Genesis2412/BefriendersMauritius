@@ -30,8 +30,11 @@
 	            	<li><a class="active" href="#">HOME</a></li>
 	            	<li><a href="allevents">EVENTS</a></li>
 	            	<li><a href="blog">BLOG</a></li>
+	            	<li><a href="#aboutUs">ABOUT US</a></li>
+                    <li><a href="#contactUs">CONTACT US</a></li>
+                    <li><a href="#needHelp">NEED HELP?</a></li>
                     <li>
-                        <a href="secure">MEMBER</a>
+                        <a href="secure">ADMIN</a>
 	                	<ul>
 	                    	
 	                    	<li>
@@ -48,9 +51,6 @@
 	                    	
 	                	</ul>
 	            	</li>
-	            	<li><a href="#aboutUs">ABOUT US</a></li>
-                    <li><a href="#contactUs">CONTACT US</a></li>
-                    <li><a href="#needHelp">NEED HELP?</a></li>
 	          </ul>
 	        </nav>
 
@@ -369,7 +369,7 @@
 
 		<!--Footer-->
 		<div class="footer">
-	        <img id="logoFooter" src="">
+	        <img id="logoFooter">
 	        <img src="./img/logo.png">
 	        <p>&copy; <script>document.write(new Date().getFullYear())</script> All rights reserved</p>
 		</div>
@@ -378,7 +378,6 @@
 	  	<script type="text/javascript">
 	        $(document).ready(function()
 	        {
-
 				$('#feedbackOff').click(function(){
 					$('#testimonialFeedback').hide();
 				});
