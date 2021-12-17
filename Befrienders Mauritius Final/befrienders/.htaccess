@@ -4,7 +4,7 @@
 RewriteEngine on
 RewriteRule ^error notfound.php
 
-RewriteRule ^allevents events.html [NC,L]
+RewriteRule ^allevents Events.html [NC,L]
 RewriteRule ^blog MainArticle.html [NC,L]
 
 RewriteRule ^connect signin.php [NC,L]
